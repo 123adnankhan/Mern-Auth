@@ -11,12 +11,18 @@ const app = express();
 const port = process.env.PORT || 4000 
 
 // middleware -> all the request will be passed using middleware 
-const allowedOrigins = ['http://localhost:5173',
-    'https://vercel.com/httpsgithubcom123adnankhan/mern-frontend'
-]
+// const allowedOrigins = ['http://localhost:5173',
+//     https://vercel.com/httpsgithubcom123adnankhan/mern-frontend
+// ]
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin:allowedOrigins,credentials:true}));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://mern-frontend-ruddy-two.vercel.app'
+  ],
+  credentials: true
+}));
 
 
 app.use('/api/auth',authRouter);
